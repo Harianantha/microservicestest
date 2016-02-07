@@ -25,6 +25,7 @@ public class CategoriesController {
         Category electronics=new Category(30,"Electronics");
         
         List<Category> booksChildCategory= new ArrayList<Category>();
+        
         List<Category> clothingChildCategory= new ArrayList<Category>();
         List<Category> electronicsCategory= new ArrayList<Category>();
         
