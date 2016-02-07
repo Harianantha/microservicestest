@@ -3,19 +3,25 @@ package hello;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CategoriesController {
 
+	private final static Logger LOGGER = Logger.getLogger(CategoriesController.class.getName()); 
     private final AtomicLong counter = new AtomicLong();
+    private final static String CLASSNAME="CategoriesController";
 
     @RequestMapping("/categories")
     public List<Category> categories() {
-        Category books=new Category(1,"Books");
-        Category clothing=new Category(2,"Clothing");
+    	String methodName="categories";
+    	LOGGER.entering(CLASSNAME, methodName);
+        Category books=new Category(10,"Books");
+        Category clothing=new Category(20,"Clothing");
         Category electronics=new Category(30,"Electronics");
         
         List<Category> booksChildCategory= new ArrayList<Category>();
@@ -32,7 +38,7 @@ public class CategoriesController {
         bookProducts.add(book1);
         bookProducts.add(book2);
         books.getProducts().addAll(bookProducts);
-        
+        LOGGER.logp(Level.INFO, CLASSNAME, methodName, "After getting products");
         Product cloth1=new Product(1,"Levis1","Levis 501","Classic Bluue Denim",new Float("30.0"));
         Product cloth2=new Product(1,"Formal1","Classic White Shirt","Formals",new Float("10.0"));
         
@@ -73,6 +79,7 @@ public class CategoriesController {
         returnList.add(books);
         returnList.add(clothing);
         returnList.add(electronics);
+        LOGGER.exiting(CLASSNAME, methodName);
         return returnList;
         
         
