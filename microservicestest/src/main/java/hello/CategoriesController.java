@@ -6,18 +6,22 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/categories")
 public class CategoriesController {
 
 	private final static Logger LOGGER = Logger.getLogger(CategoriesController.class.getName()); 
     private final AtomicLong counter = new AtomicLong();
     private final static String CLASSNAME="CategoriesController";
 
-    @RequestMapping("/categories")
-    public List<Category> categories() {
+    
+    @RequestMapping(method=RequestMethod.GET)
+    public List<Category> findAll() {
     	String methodName="categories";
     	LOGGER.entering(CLASSNAME, methodName);
         Category books=new Category(10,"Books");
@@ -85,5 +89,22 @@ public class CategoriesController {
         
         
         
+    }
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    Category findById(@PathVariable("id") long id) {
+    	String methodName="findById";
+    	LOGGER.entering(CLASSNAME, methodName);
+    	LOGGER.logp(Level.INFO, CLASSNAME, methodName, "Getting category with ID:"+id);
+    	//TODO ProperImplementation
+    	Category category=null;
+    	List<Category> categogires=findAll();
+    	for(Category cgy:categogires){
+    		if(cgy.getId()==id){
+    			category=cgy;
+    			break;
+    		}
+    	}
+    	LOGGER.exiting(CLASSNAME, methodName);
+        return category;
     }
 }
