@@ -1,4 +1,4 @@
-package hello;
+package com.cognizant.microservice.demo;
 
 public class Product {
 

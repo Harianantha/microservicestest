@@ -1,4 +1,4 @@
-package hello;
+package com.cognizant.microservice.demo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +27,18 @@ public class CategoriesController {
         Category books=new Category(10,"Books");
         Category clothing=new Category(20,"Clothing");
         Category electronics=new Category(30,"Electronics");
+        Category hhutilities=new Category(40,"Household Utillities");
         
         List<Category> booksChildCategory= new ArrayList<Category>();
         
         List<Category> clothingChildCategory= new ArrayList<Category>();
         List<Category> electronicsCategory= new ArrayList<Category>();
+        List<Category> hhCategory= new ArrayList<Category>();
         
         List<Product> bookProducts= new ArrayList<Product>();
         List<Product> clothingProducts= new ArrayList<Product>();
         List<Product> electronicsProducts= new ArrayList<Product>();
+        List<Product> utiltiiesProducts= new ArrayList<Product>();
         
         
         Product book1=new Product(1,"MenAreFrom","Men are From Mars,Women are from Venus","Book about Psychoology",new Float("12.0"));
@@ -57,6 +60,12 @@ public class CategoriesController {
         electronicsProducts.add(electronics1);
         electronicsProducts.add(electronics2);
         electronics.getProducts().addAll(electronicsProducts);
+        
+        Product utility1=new Product(1,"Window Screen","Window Screen","Green Table",new Float("10.0"));
+        Product utility2=new Product(1,"Floor Mat","Floor Mat","Floor Mat",new Float("5.0"));
+        utiltiiesProducts.add(utility1);
+        utiltiiesProducts.add(utility2);
+        hhutilities.getProducts().addAll(utiltiiesProducts);
         
         clothingProducts.add(cloth1);
         clothingProducts.add(cloth2);
@@ -80,10 +89,17 @@ public class CategoriesController {
         electronicsCategory.add(tablets);
         electronics.getChildCategories().addAll(electronicsCategory);
         
+        Category mats=new Category(70,"Mats");
+        Category screen=new Category(80,"Screens");
+        hhCategory.add(mats);
+        hhCategory.add(screen);
+        hhutilities.getChildCategories().addAll(hhCategory);
+        
         List<Category> returnList=new ArrayList<Category>();
         returnList.add(books);
         returnList.add(clothing);
         returnList.add(electronics);
+        returnList.add(hhutilities);
         LOGGER.exiting(CLASSNAME, methodName);
         return returnList;
         

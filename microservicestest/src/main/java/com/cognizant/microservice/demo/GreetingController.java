@@ -1,4 +1,4 @@
-package hello;
+package com.cognizant.microservice.demo;
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;

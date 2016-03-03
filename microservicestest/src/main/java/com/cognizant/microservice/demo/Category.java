@@ -1,4 +1,4 @@
-package hello;
+package com.cognizant.microservice.demo;
 
 import java.util.ArrayList;
 import java.util.List;
