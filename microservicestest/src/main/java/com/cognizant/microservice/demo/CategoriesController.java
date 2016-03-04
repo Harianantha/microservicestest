@@ -24,6 +24,7 @@ public class CategoriesController {
     public List<Category> findAll() {
     	String methodName="categories";
     	LOGGER.entering(CLASSNAME, methodName);
+    	
         Category books=new Category(10,"Books");
         Category clothing=new Category(20,"Clothing");
         Category electronics=new Category(30,"Electronics");
